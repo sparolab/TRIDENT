@@ -1,0 +1,6 @@
+
+--project_name TRIDENT
+
+--mode samples_test
+--device 0
+--config local_configs/cfg/TRIDENT_three_task.py

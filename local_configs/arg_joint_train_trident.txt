@@ -1,0 +1,6 @@
+
+--project_name TRIDENT
+
+--mode train
+--device 0
+--config local_configs/cfg/TRIDENT_two_task.py
