@@ -2,6 +2,8 @@
 
 **IEEE Sensors Journal 2024**
 
+
+
 This repository represents the official implementation of the paper titled "TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth, and Uncertainty Estimation for Underwater 3-D Robot Visual Perception".
 
 [![ProjectPage](fig/badges/badge-website.svg)](https://sites.google.com/view/underwater-trident/home)
@@ -10,13 +12,17 @@ This repository represents the official implementation of the paper titled "TRID
 [![Docker](https://badges.aleen42.com/src/docker.svg)](https://hub.docker.com/r/ygm7422/official_trident)
 [![License](https://img.shields.io/badge/License-GPL--3.0-929292)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-
 [Geonmo Yang](https://scholar.google.com/citations?user=kiBTkqMAAAAJ&hl=en&oi=sra),
 [Younggun Cho](https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko)
 
+<div align="center">
+  <img src=fig/trident.png alt="description" width="50%" />
+</div>
+
 In this paper, we introduce a novel learning-based sensing system that tackles the multidimensional vision tasks in underwater; concretely, we deal with image enhancement, depth estimation, and uncertainty for 3-D visual systems. Also, we propose a **TRIDENT** model in a fast and lightweight manner; **TRIDENT** consists of three parallelized decoders and one backbone structure for efficient feature sharing. In addition, it is designed to be trained to express complex parameterization. In experimental evaluation on several standard datasets, we demonstrate that **TRIDENT** significantly outperforms other existing methods on image enhancement and depth estimation. Despite performing three tasks, our model has better efficiency than the others for both memory size and inference time. Finally, our joint learning approach demonstrates robustness in feature matching and seamlessly extends from 2-D to 3-D vision tasks.
 
-![teaser](fig/joint_id.png)
+
+
 
 ## 🛠️ Prerequisites
 1. Run the demo locally (requires a GPU and an `nvidia-docker2`, see [Installation Guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html))
@@ -102,7 +108,7 @@ In this paper, we introduce a novel learning-based sensing system that tackles t
     ```
 4. After downloading, you should see the following file structure in the `Joint_ID_Dataset` folder
 
-5. If you want to know the dataset, then see the [project page](https://sites.google.com/view/underwater-trident/home) for additional dataset details.
+5. If you want to know the dataset, then see the [**project page**](https://sites.google.com/view/underwater-trident/home) for additional dataset details.
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
@@ -160,10 +166,10 @@ Regardless of whether you use method 1 or 2, you should have a docker container 
     cd /root/workspace
 
     # start to train on Joint-ID Dataset
-    python run.py local_configs/arg_joint_train.txt
+    python run.py local_configs/arg_joint_train_trident.txt
     ```
 2. The model's checkpoints and log files are saved in the `/root/workspace/save` folder.
-3. If you want to change the default variable setting for training, see [**Inference settings**](https://github.com/sparolab/Joint_ID?tab=readme-ov-file#%EF%B8%8F-inference-settings) below.
+3. If you want to change the default variable setting for training, see [**Inference settings**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#%EF%B8%8F-inference-settings) below.
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
@@ -175,17 +181,17 @@ Regardless of whether you use method 1 or 2, you should have a docker container 
     cd /root/workspace
 
     # start to test on Joint-ID Dataset
-    python run.py local_configs/arg_joint_test.txt
+    python run.py local_configs/arg_joint_test_trident.txt
     ```
-2. The test images and results are saved in the `result_joint.diml.joint_id` folder.
+2. The test images and results are saved in the `result_joint.TRIDENT_two_task` folder.
 
-3. If you want to change the default variable setting for testing, see [**Inference settings**](https://github.com/sparolab/Joint_ID?tab=readme-ov-file#%EF%B8%8F-inference-settings) below.
+3. If you want to change the default variable setting for testing, see [**Inference settings**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#%EF%B8%8F-inference-settings) below.
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
 
 ### 🚀 Testing for TRIDENT on Standard or Custom Dataset
-1. Set the dataset related variables in the `local_configs/cfg/joint.diml.joint_id.py` file. Below, enter the input image path in the `sample_test_data_path` variable.
+1. Set the dataset related variables in the `local_configs/cfg/TRIDENT_two_task.py` file. Below, enter the input image path in the `sample_test_data_path` variable.
     ```python
     ...
 
@@ -214,7 +220,7 @@ Regardless of whether you use method 1 or 2, you should have a docker container 
     python run.py local_configs/arg_joint_samples_test.txt
     ```
 
-3. The test images and results are saved in the `sample_eval_result_joint.diml.joint_id` folder.
+3. The test images and results are saved in the `sample_eval_result_joint.TRIDENT_two_task` folder.
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
@@ -236,11 +242,11 @@ We set the hyperparameters in 'local_configs/cfg/joint.diml.joint_id.py'.
 ## 🎓 Citation
 Please cite our paper:
 ```bibtex
-@article{yang2023joint,
-  title={Joint-ID: Transformer-based Joint Image Enhancement and Depth Estimation for Underwater Environments},
-  author={Yang, Geonmo and Kang, Gilhwan and Lee, Juhui and Cho, Younggun},
+@article{yang2024trident,
+  title={TRIDENT: Efficient Triple-Task Learning of Dehazing, Depth and Uncertainty Estimation for Underwater 3D Robot Visual Perception},
+  author={Yang, Geonmo and Cho, Younggun},
   journal={IEEE Sensors Journal},
-  year={2023},
+  year={2024},
   publisher={IEEE}
 }
 ```
@@ -252,7 +258,7 @@ Please cite our paper:
 
 Geonmo Yang: ygm7422@gmail.com
 
-Project Link: [https://sites.google.com/view/joint-id/home](https://sites.google.com/view/underwater-trident/home)
+Project Link: [https://sites.google.com/view/underwater-trident/home](https://sites.google.com/view/underwater-trident/home)
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
