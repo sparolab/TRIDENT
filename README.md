@@ -16,7 +16,7 @@ This repository represents the official implementation of the paper titled "TRID
 [Younggun Cho](https://scholar.google.com/citations?user=W5MOKWIAAAAJ&hl=ko)
 
 <div align="center">
-  <img src=fig/trident.png alt="description" width="50%" />
+  <img src=fig/trident.png alt="description" width="55%" />
 </div>
 
 In this paper, we introduce a novel learning-based sensing system that tackles the multidimensional vision tasks in underwater; concretely, we deal with image enhancement, depth estimation, and uncertainty for 3-D visual systems. Also, we propose a **TRIDENT** model in a fast and lightweight manner; **TRIDENT** consists of three parallelized decoders and one backbone structure for efficient feature sharing. In addition, it is designed to be trained to express complex parameterization. In experimental evaluation on several standard datasets, we demonstrate that **TRIDENT** significantly outperforms other existing methods on image enhancement and depth estimation. Despite performing three tasks, our model has better efficiency than the others for both memory size and inference time. Finally, our joint learning approach demonstrates robustness in feature matching and seamlessly extends from 2-D to 3-D vision tasks.
