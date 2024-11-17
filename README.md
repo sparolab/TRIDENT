@@ -38,10 +38,10 @@ In this paper, we introduce a novel learning-based sensing system that tackles t
 2. [**⬇  Prepare Dataset**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#-prepare-dataset)
 3. [**🐋 Prepare Docker Image and Run the Docker Container**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#-prepare-docker-image-and-run-the-docker-container)
 
-### 🚀 Traning or Testing for Joint-ID
-1. [**🚀 Training for Joint-ID on Joint-ID Dataset**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#-training-for-joint-id-on-joint-id-dataset)
-2. [**🚀 Testing for Joint-ID on Joint-ID Dataset**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#-testing-for-joint-id-on-joint-id-dataset)
-3. [**🚀 Testing for Joint-ID on Standard or Custom Dataset**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#-testing-for-joint-id-on-standard-or-custom-dataset)
+### 🚀 Traning or Testing for TRIDENT
+1. [**🚀 Training for TRIDENT on Joint-ID Dataset**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#-training-for-trident-on-joint-id-dataset)
+2. [**🚀 Testing for TRIDENT on Joint-ID Dataset**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#-testing-for-trident-on-joint-id-dataset)
+3. [**🚀 Testing for TRIDENT on Standard or Custom Dataset**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#-testing-for-trident-on-standard-or-custom-dataset)
 
 ### ✏️ ETC
 4. [**⚙️ Inference settings**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#%EF%B8%8F-inference-settings) 
@@ -61,16 +61,16 @@ In this paper, we introduce a novel learning-based sensing system that tackles t
     cd TRIDENT
     ```
 
-2. Let's call the path where Joint-ID's repository is located `${Joint-ID_root}`.
+2. Let's call the path where **TRIDENT**'s repository is located `${TRIDENT_root}`.
 
-3. Download a checkpoint [**joint_id_ckpt.pth**](https://www.dropbox.com/scl/fo/rn49h1r54uqsdsjs896jf/h?rlkey=u0yypv3y7y5lm20a81vqcjyxm&dl=0) of our model on path `${Joint-ID_root}/Joint_ID`.
+3. You don't need to download checkpoint files. Checkpoint files are already in `${TRIDENT_root}/TRIDENT/ckpt`. Because the model is so light-weight, it's already in the git repo.
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
 
 ### ⬇ Prepare Dataset
 ![dataset](fig/dataset.png)
-1. Download the [**Joint_ID_Dataset.zip**](https://www.dropbox.com/scl/fo/olr8awsue6uion5fng25j/h?rlkey=jy6pbnbop6ppc0703it7lmite&dl=0)
+1. **TRIDENT** uses the dataset from the [**Joint-ID**](https://github.com/sparolab/Joint_ID) paper. Please download the [**Joint_ID_Dataset.zip**](https://www.dropbox.com/scl/fo/olr8awsue6uion5fng25j/h?rlkey=jy6pbnbop6ppc0703it7lmite&dl=0)
 
 2. Next, unzip the file named `Joint_ID_Dataset.zip` with the downloaded path as `${dataset_root_path}`.
     ```bash
@@ -102,7 +102,7 @@ In this paper, we introduce a novel learning-based sensing system that tackles t
     ```
 4. After downloading, you should see the following file structure in the `Joint_ID_Dataset` folder
 
-5. If you want to know the dataset, then see the [project page](https://sites.google.com/view/joint-id/home) for additional dataset details.
+5. If you want to know the dataset, then see the [project page](https://sites.google.com/view/underwater-trident/home) for additional dataset details.
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
@@ -114,14 +114,14 @@ To run a docker container, we need to create a docker image. There are two ways 
 
     ```bash
     # download the docker image
-    docker pull ygm7422/official_joint_id:latest    
+    docker pull ygm7422/official_trident:latest    
     
     # run the docker container
     nvidia-docker run \
     --privileged \
     --rm \
     --gpus all -it \
-    --name joint-id \
+    --name trident \
     --ipc=host \
     --shm-size=256M \
     --net host \
@@ -130,30 +130,30 @@ To run a docker container, we need to create a docker image. There are two ways 
     -v /root/.Xauthority:/root/.Xauthority \
     --env="QT_X11_NO_MITSHM=1" \
     -v ${dataset_root_path}/Joint_ID_Dataset:/root/workspace/dataset_root \
-    -v ${Joint-ID_root}/Joint_ID:/root/workspace \
-    ygm7422/official_joint_id:latest 
+    -v ${TRIDENT_root}/TRIDENT:/root/workspace \
+    ygm7422/official_trident:latest 
     ```
 
 2. Use `docker compose` (this is used to build docker iamges and run container simultaneously):
 
     ```bash
-    cd ${Joint-ID_root}/Joint_ID
+    cd ${TRIDENT_root}/TRIDENT
 
     # build docker image and run container simultaneously
     bash run_docker.sh up gpu ${dataset_root_path}/Joint_ID_Dataset
     
     # Inside the container
-    docker exec -it Joint_ID bash
+    docker exec -it TRIDENT bash
     ```
 
-Regardless of whether you use method 1 or 2, you should have a docker container named `Joint_ID` running.
+Regardless of whether you use method 1 or 2, you should have a docker container named `TRIDENT` running.
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
 
-## 🚀 Traning or Testing for Joint-ID 
+## 🚀 Traning or Testing for TRIDENT
 
-### 🚀 Training for Joint-ID on Joint-ID Dataset
+### 🚀 Training for TRIDENT on Joint-ID Dataset
 1. First, move to the `/root/workspace` folder inside the docker container. Then, run the following command to start the training.
     ```bash
     # move to workspace
@@ -168,7 +168,7 @@ Regardless of whether you use method 1 or 2, you should have a docker container 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
 
-### 🚀 Testing for Joint-ID on Joint-ID Dataset
+### 🚀 Testing for TRIDENT on Joint-ID Dataset
 1. First, move to the `/root/workspace` folder inside the docker container. Then, run the following command to start the testing.
     ```bash
     # move to workspace
@@ -184,7 +184,7 @@ Regardless of whether you use method 1 or 2, you should have a docker container 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
 
-### 🚀 Testing for Joint-ID on Standard or Custom Dataset
+### 🚀 Testing for TRIDENT on Standard or Custom Dataset
 1. Set the dataset related variables in the `local_configs/cfg/joint.diml.joint_id.py` file. Below, enter the input image path in the `sample_test_data_path` variable.
     ```python
     ...
@@ -252,7 +252,7 @@ Please cite our paper:
 
 Geonmo Yang: ygm7422@gmail.com
 
-Project Link: [https://sites.google.com/view/joint-id/home](https://sites.google.com/view/joint-id/home)
+Project Link: [https://sites.google.com/view/joint-id/home](https://sites.google.com/view/underwater-trident/home)
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
