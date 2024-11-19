@@ -159,17 +159,28 @@ Regardless of whether you use method 1 or 2, you should have a docker container 
 
 ## 🚀 Traning or Testing for TRIDENT
 
-### 🚀 Training for TRIDENT on Joint-ID Dataset
+### 🚀 Two Task Training for TRIDENT on Joint-ID Dataset
 1. First, move to the `/root/workspace` folder inside the docker container. Then, run the following command to start the training.
     ```bash
     # move to workspace
     cd /root/workspace
 
-    # start to train on Joint-ID Dataset
+    # start two task (image enhancement & depth estimation) training on Joint-ID Dataset
     python run.py local_configs/arg_joint_train_trident.txt
     ```
 2. The model's checkpoints and log files are saved in the `/root/workspace/save` folder.
 3. If you want to change the default variable setting for training, see [**Inference settings**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#%EF%B8%8F-inference-settings) below.
+
+### 🚀 Three Task Training for TRIDENT on Joint-ID Dataset
+1. If you want to use uncertainty module, then run the following command to start the training. (You should have already finished the first training.)
+    ```bash
+    # move to workspace
+    cd /root/workspace
+
+    # start uncertainty module training on Joint-ID Dataset
+    python run.py local_configs/arg_triple_train_trident.txt
+    ```
+
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
@@ -182,8 +193,13 @@ Regardless of whether you use method 1 or 2, you should have a docker container 
 
     # start to test on Joint-ID Dataset
     python run.py local_configs/arg_joint_test_trident.txt
+    
+    or
+    
+    # start to test on Joint-ID Dataset
+    python run.py local_configs/arg_triple_test_trident.txt
     ```
-2. The test images and results are saved in the `result_joint.TRIDENT_two_task` folder.
+2. The test images and results are saved in the `result_joint.TRIDENT_two_task` or `result_joint.TRIDENT_three_task` folder.
 
 3. If you want to change the default variable setting for testing, see [**Inference settings**](https://github.com/sparolab/TRIDENT?tab=readme-ov-file#%EF%B8%8F-inference-settings) below.
 
@@ -218,9 +234,14 @@ Regardless of whether you use method 1 or 2, you should have a docker container 
     
     # start to test on standard datasets
     python run.py local_configs/arg_joint_samples_test.txt
+
+    or
+
+    # start to test on standard datasets
+    python run.py local_configs/arg_triple_samples_test.txt
     ```
 
-3. The test images and results are saved in the `sample_eval_result_joint.TRIDENT_two_task` folder.
+3. The test images and results are saved in the `sample_eval_result_joint.TRIDENT_two_task` folder or `sample_eval_result_joint.TRIDENT_three_task` folder.
 
 <br/>
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
