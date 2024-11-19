@@ -285,7 +285,8 @@ Project Link: [https://sites.google.com/view/underwater-trident/home](https://si
 <p align="right">(<a href="#readme-table">back to table</a>)</p>
 
 ##  🎫 License
-This work is licensed under the GPL License, Version 3.0 (as defined in the [LICENSE](LICENSE)).
+For academic usage, the code is released under the GPL License, Version 3.0 (as defined in the [LICENSE](LICENSE)). For any commercial purpose, please contact the authors.
+This work is licensed under the GPL License, Version 3.0 
 
 [![License](https://img.shields.io/badge/License-GPL--3.0-929292)](https://www.gnu.org/licenses/gpl-3.0.html)
 
